@@ -1,5 +1,5 @@
 .player {
-    background-color: orange;
+    background-color: rgb(161, 161, 161);
     width: 300px;
     display: flex;
     align-items: center;
@@ -10,9 +10,13 @@
         margin-left: 16px;
     }
     img {
-        width: 100px;
-        height: 100px;
+        width: 70px;
+        height: 70px;
         object-fit: cover;
         border-radius: 100%;
     }
+}
+
+.playerActive {
+    background-color: orange !important;
 }
