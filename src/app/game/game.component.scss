@@ -32,6 +32,11 @@
     transform: scale(1) translateX(220px) translateY(-300px);
 }
 
+.played-card {
+    right: 25px;
+    transform: scale(1) translateX(220px) translateY(-300px);
+}
+
 @keyframes pick-card-animation {
     0% {
         transform: scale(1);
