@@ -1,0 +1,15 @@
+.game-info {
+    background-color: white;
+    color: black;
+    text-align: center;
+    min-height: 50px;
+}
+
+@media only screen and (max-width: 500px) {
+    .game-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 120px;
+    }
+}

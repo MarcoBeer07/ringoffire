@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./start-screen.component.scss']
 })
 export class StartScreenComponent implements OnInit {
-
+  @Input() avatarBox = false;
   constructor(private router: Router) { }
 
   ngOnInit(): void {

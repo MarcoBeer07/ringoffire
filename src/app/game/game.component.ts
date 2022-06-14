@@ -24,16 +24,17 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    if (!this.pickCardAnimation) {
+    if (!this.pickCardAnimation && this.game.players.length > 0) {
       this.currentCard = this.game.stack.pop();
       this.pickCardAnimation = true;
       this.game.currentPlayer++;
-
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
       setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
         this.pickCardAnimation = false;
       }, 950);
+    } else {
+      alert('Please add players on with the button on bottom right')
     }
   }
 
