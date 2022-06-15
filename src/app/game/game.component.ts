@@ -33,7 +33,7 @@ export class GameComponent implements OnInit {
         this.game.playedCards.push(this.currentCard);
         this.pickCardAnimation = false;
       }, 950);
-    } else {
+    } else if (this.game.players.length == 0) {
       alert('Please add players on with the button on bottom right')
     }
   }

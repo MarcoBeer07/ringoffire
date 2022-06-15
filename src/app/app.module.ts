@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { DialogAddPlayerComponent } from './dialog-add-player/dialog-add-player.component';
 import { GameInfoComponent } from './game-info/game-info.component';
 import { MatCardModule } from '@angular/material/card';
+import { ImprintComponent } from './imprint/imprint.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { MatCardModule } from '@angular/material/card';
     GameComponent,
     PlayerComponent,
     DialogAddPlayerComponent,
-    GameInfoComponent
+    GameInfoComponent,
+    ImprintComponent
   ],
   imports: [
     BrowserModule,

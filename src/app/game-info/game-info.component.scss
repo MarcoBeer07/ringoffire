@@ -5,11 +5,36 @@
     min-height: 50px;
 }
 
+.imprint-link {
+    position: absolute;
+    left: 20px;
+    bottom: 40px;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    &:hover {
+        transform: scale(1.02);
+    }
+}
+
 @media only screen and (max-width: 500px) {
     .game-info {
         display: flex;
         flex-direction: column;
         justify-content: center;
         min-height: 120px;
+    }
+    .imprint-link {
+        position: absolute;
+        left: 20px;
+        bottom: 10px;
+        text-decoration: none;
+        color: black;
+        font-size: 18px;
+        font-weight: bold;
+        &:hover {
+            transform: scale(1.02);
+        }
     }
 }

@@ -1,0 +1,44 @@
+.impressum {
+    color: rgb(0, 0, 0);
+    position: relative;
+    background-image: url('/assets/img/board.jpg');
+    background-size: cover;
+    z-index: 1;
+    font-weight: bold;
+    max-height: 100%;
+    height: 100vh;
+    overflow: hidden;
+    button {
+        cursor: pointer;
+        background-color: black;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 50px;
+        width: 150px;
+        height: 50px;
+        border-radius: 15px;
+        &:hover {
+            transform: scale(1.05);
+            background-color: rgba(0, 0, 0, 0.89);
+        }
+    }
+}
+
+.impressum-content {
+    font-weight: bold;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 200px;
+    font-size: 20px;
+    text-align: center;
+    a {
+        color: rgb(0, 0, 0);
+    }
+    h1 {
+        font-weight: bold;
+    }
+}
