@@ -1,18 +1,18 @@
-<app-player *ngFor="let player of game.players; let i = index;" [ngStyle]="{'top.px' : 90 + (i * 90)}" [ngStyle]="{'right.px' : 90 + (i * 150)}" [playerActive]="i==game.currentPlayer" [name]="player" class="player-position">
+<app-player *ngFor="let player of game.players; let i = index;" [ngStyle]="{'top.px' : 90 + (i * 90)}" [playerActive]="i==game.currentPlayer" [name]="player" class="player-position">
 </app-player>
 
 <div class="field">
 
     <div class="card-stack">
         <!-- Card stack -->
-        <img [ngStyle]="{'right.px' : i * 5}" *ngFor="let c of [0,1,2,3]; let i = index;" src="/assets/img/cards/card_cover.png" alt="">
-        <img (click)="takeCard()" class="top-card" style="right: 25px" src="/assets/img/cards/card_cover.png" alt="">
+        <img [ngStyle]="{'right.px' : i * 5}" *ngFor="let c of [0,1,2,3]; let i = index;" src="assets/img/cards/card_cover.png" alt="">
+        <img (click)="takeCard()" class="top-card" style="right: 25px" src="assets/img/cards/card_cover.png" alt="">
 
         <!-- Stack for played cards -->
-        <img *ngFor="let card of game.playedCards" class="played-card" src="/assets/img/cards/{{ card }}.png" alt="">
+        <img *ngFor="let card of game.playedCards" class="played-card" src="assets/img/cards/{{ card }}.png" alt="">
 
         <!-- current card (animation) -->
-        <img (click)="takeCard()" *ngIf="pickCardAnimation" class="pick-card" style="right: 25px" src="/assets/img/cards/{{ currentCard }}.png" alt="">
+        <img (click)="takeCard()" *ngIf="pickCardAnimation" class="pick-card" style="right: 25px" src="assets/img/cards/{{ currentCard }}.png" alt="">
 
 
     </div>
@@ -23,3 +23,6 @@
 <button (click)="openDialog()" class="button-add" mat-fab color="primary">
     <mat-icon>add</mat-icon>
   </button>
+
+
+<!--[ngStyle]="{'top.px' : 90 + (i * 90)}"-->
