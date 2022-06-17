@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, HostListener } from '@angular/core';
 import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
@@ -16,16 +16,18 @@ export class GameComponent implements OnInit {
   innerHeight: any;
   innerWidth: any;
 
-
   constructor(public dialog: MatDialog) {
     this.innerHeight = (window.screen.height) + "px";
     this.innerWidth = (window.screen.width) + "px";
+  }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = event.target.innerWidth;
   }
 
   ngOnInit(): void {
     this.newGame();
-
   }
 
   newGame() {
@@ -41,7 +43,7 @@ export class GameComponent implements OnInit {
       setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
         this.pickCardAnimation = false;
-      }, 950);
+      }, 930);
     } else if (this.game.players.length == 0) {
       alert('Please add players on with the button on bottom right')
     }
@@ -62,13 +64,13 @@ export class GameComponent implements OnInit {
       return {
         'left.px': 40 + (i * 225)
       }
-    } else if (innerWidth < 1100) {
+    } else if (innerWidth < 1100 && innerWidth > 500) {
       return {
-        'left.px': 40 + (i * 60)
+        'left.px': 40 + (i * 120)
       }
     } else if (innerWidth < 500) {
       return {
-        'left.px': 40 + (i * 50)
+        'left.px': 10 + (i * 65)
       }
     }
   }
