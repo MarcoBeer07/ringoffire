@@ -1,21 +1,28 @@
 .player {
     background-color: rgba(17, 17, 17, 0.164);
-    width: 300px;
-    max-width: 300px;
+    flex-direction: column-reverse;
     display: flex;
+    justify-content: center;
     align-items: center;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    text-align: center;
+    width: 200px;
+    height: 200px;
     span {
-        max-width: 300px;
-        font-size: 32px;
         font-weight: bold;
-        margin-left: 16px;
+        font-size: 25px;
+        margin-left: 0px;
+        max-width: 100%;
     }
     img {
+        margin-bottom: 20px;
+        margin-top: 20px;
         cursor: pointer;
-        width: 70px;
-        height: 70px;
+        width: 80px;
+        height: 80px;
         object-fit: cover;
         border-radius: 100%;
     }
