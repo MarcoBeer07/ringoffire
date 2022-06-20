@@ -2,6 +2,7 @@ import { Component, Input, OnInit, HostListener } from '@angular/core';
 import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-game',
@@ -16,7 +17,7 @@ export class GameComponent implements OnInit {
   innerHeight: any;
   innerWidth: any;
 
-  constructor(public dialog: MatDialog) {
+  constructor(private firestore: AngularFirestore, public dialog: MatDialog) {
     this.innerHeight = (window.screen.height) + "px";
     this.innerWidth = (window.screen.width) + "px";
   }
@@ -28,10 +29,19 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.newGame();
+    this.firestore
+      .collection('items')
+      .valueChanges()
+      .subscribe((game) => {
+        console.log('game update', game)
+      })
   }
 
   newGame() {
     this.game = new Game();
+    this.firestore
+      .collection('games')
+      .add({ 'Hallo': 'Welt' })
   }
 
   takeCard() {
