@@ -1,7 +1,12 @@
-<app-player *ngFor="let player of game.players; let i = index;" [ngStyle]="addStyle(i)" [playerActive]="i==game.currentPlayer" [name]="player" class="player-position">
+<app-player (click)="editPlayer(i)" *ngFor="let player of game.players; let i = index;" [ngStyle]="addStyle(i)" [playerActive]="i==game.currentPlayer" [image]="game.player_images[i]" [name]="player" class="player-position">
 </app-player>
 
-<div class="field">
+<div *ngIf="gameOver" class="game-over">
+    <img src="assets/img/game_over.svg" alt="">
+
+</div>
+
+<div *ngIf="!gameOver" class="field">
 
     <div class="card-stack">
         <!-- Card stack -->
@@ -18,9 +23,9 @@
     </div>
 </div>
 
-<app-game-info [card]="game.currentCard" class="pin-bottom"></app-game-info>
+<app-game-info *ngIf="!gameOver" [card]="game.currentCard" class="pin-bottom"></app-game-info>
 
-<button (click)="openDialog()" class="button-add" mat-fab color="primary">
+<button *ngIf="!gameOver" (click)="openDialog()" class="button-add" mat-fab color="primary">
     <mat-icon>add</mat-icon>
   </button>
 

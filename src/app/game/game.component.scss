@@ -1,3 +1,8 @@
+body {
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
 .field {
     width: 100vw;
     height: 100vh;
@@ -37,6 +42,15 @@
     transform: scale(1) translateX(180px) translateY(-100px);
 }
 
+.game-over {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 300px;
+    }
+}
+
 @keyframes pick-card-animation {
     0% {
         transform: scale(1);
@@ -53,6 +67,7 @@
 }
 
 .player-position {
+    overflow: hidden;
     position: absolute;
     right: 0;
     top: 0;
@@ -125,6 +140,7 @@
         img {
             position: absolute;
             width: 100px;
+            bottom: -50px;
         }
     }
     .pick-card {

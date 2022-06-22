@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { EditPlayerComponent } from '../edit-player/edit-player.component';
 
 @Component({
   selector: 'app-game',
@@ -15,6 +16,7 @@ export class GameComponent implements OnInit {
 
   game: Game;
   gameId: string;
+  gameOver = false;
   innerHeight: any;
   innerWidth: any;
 
@@ -33,7 +35,6 @@ export class GameComponent implements OnInit {
     this.route.params.subscribe((params) => {
       console.log(params.id);
       this.gameId = params.id;
-
       this.firestore
         .collection('games')
         .doc(this.gameId)
@@ -43,6 +44,7 @@ export class GameComponent implements OnInit {
           this.game.currentPlayer = game.currentPlayer;
           this.game.playedCards = game.playedCards;
           this.game.players = game.players;
+          this.game.player_images = game.player_images;
           this.game.stack = game.stack;
           this.game.pickCardAnimation = game.pickCardAnimation;
           this.game.currentCard = game.currentCard;
@@ -57,10 +59,11 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    if (!this.game.pickCardAnimation && this.game.players.length > 0) {
+    if (this.game.stack.length == 0) {
+      this.gameOver = true;
+    } else if (!this.game.pickCardAnimation && this.game.players.length > 0) {
       this.game.currentCard = this.game.stack.pop();
       this.game.pickCardAnimation = true;
-
       this.game.currentPlayer++;
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
 
@@ -82,6 +85,7 @@ export class GameComponent implements OnInit {
     dialogRef.afterClosed().subscribe(name => {
       if (name && name.length > 0) {
         this.game.players.push(name);
+        this.game.player_images.push('user.png');
         this.saveGame();
       }
     });
@@ -95,18 +99,38 @@ export class GameComponent implements OnInit {
   }
 
   addStyle(i) {
-    if (innerWidth > 1100) {
+    if (innerWidth > 1900) {
       return {
         'left.px': 40 + (i * 225)
       }
-    } else if (innerWidth < 1100 && innerWidth > 500) {
+    } else if (innerWidth < 1900 && innerWidth > 1100) {
       return {
         'left.px': 40 + (i * 120)
       }
-    } else if (innerWidth < 500) {
+    } else if (innerWidth < 1100 && innerWidth > 500) {
       return {
         'left.px': 10 + (i * 65)
       }
+    } else if (innerWidth < 500) {
+      return {
+        'left.px': 5 + (i * 45)
+      }
     }
+  }
+
+  editPlayer(playerId: number) {
+    const dialogRef = this.dialog.open(EditPlayerComponent);
+    dialogRef.afterClosed().subscribe(change => {
+      if (change) {
+        if (change == 'DELETE') {
+          this.game.player_images.splice(playerId, 1)
+          this.game.players.splice(playerId, 1)
+        } else {
+          this.game.player_images[playerId] = change;
+        }
+        this.saveGame();
+      }
+    });
+
   }
 }
