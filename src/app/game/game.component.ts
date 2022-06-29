@@ -13,7 +13,6 @@ import { EditPlayerComponent } from '../edit-player/edit-player.component';
 })
 export class GameComponent implements OnInit {
   @Input() responisiveView = false;
-
   game: Game;
   gameId: string;
   gameOver = false;
